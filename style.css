@@ -57,4 +57,9 @@ h1 {
   font-style: italic;
   opacity: 0.8;
   margin-top: 20px;
+  transition: opacity 0.5s ease;
 }
+
+/* 🧱 Recomendações formatadas */
+.card {
+  margin-to
