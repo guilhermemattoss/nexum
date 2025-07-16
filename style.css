@@ -195,3 +195,17 @@ h1 {
 #mensagem.fade {
   opacity: 0;
 }
+
+.footer {
+  font-size: 0.75rem;
+  color: var(--text);
+  opacity: 0.5;
+  text-align: center;
+  padding: 10px 0;
+  font-family: var(--font);
+  user-select: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: transparent;
+}
