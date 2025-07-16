@@ -1,4 +1,4 @@
-const clickSound = new Audio("assets/click.mp3"); // Som do clique, caminho certinho
+const clickSound = new Audio("assets/click.mp3"); 
 
 const mensagem = document.getElementById("mensagem");
 const moods = document.querySelectorAll(".mood");
@@ -42,6 +42,8 @@ function mudarTema(mood) {
       document.documentElement.style.setProperty("--text", "#b0fdfd");
       break;
   }
+}
+
 }
 
 
