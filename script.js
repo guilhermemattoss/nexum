@@ -7,8 +7,19 @@ moods.forEach(btn => {
   btn.addEventListener("click", () => {
     const mood = btn.dataset.mood;
     mudarTema(mood);
-    clickSound.play(); // toca o som do clique
-    mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.`;
+    clickSound.play();
+
+    
+    mensagem.classList.add('fade');
+    setTimeout(() => {
+      mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.`;
+
+      const style = getComputedStyle(document.documentElement);
+      const textColor = style.getPropertyValue('--text');
+      mensagem.style.color = textColor;
+
+      mensagem.classList.remove('fade');
+    }, 300);
   });
 });
 
@@ -32,5 +43,6 @@ function mudarTema(mood) {
       break;
   }
 }
+
 
 
