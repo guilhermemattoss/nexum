@@ -198,15 +198,18 @@ h1 {
 
 
 .footer {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   color: var(--text);
-  opacity: 0.5;
+  opacity: 0.3;
   text-align: center;
-  padding: 10px 0;
+  padding: 3px 0;
   font-family: var(--font);
-  user-select: none;
   position: fixed;
-  bottom: 0;
+  bottom: 2px;
   width: 100%;
   background: transparent;
+  pointer-events: none; 
+  user-select: none;     
+}
+
 }
