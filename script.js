@@ -5,7 +5,7 @@ const moods = document.querySelectorAll(".mood");
 const somClique = new Audio('assets/click');
 
 moods.forEach(btn => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click.mp3", () => {
     somClique.play();
     const mood = btn.dataset.mood;
     mudarTema(mood);
