@@ -1,13 +1,17 @@
 const mensagem = document.getElementById("mensagem");
 const moods = document.querySelectorAll(".mood");
 
-// Criar objeto de áudio para o som de clique
-const somClique = new Audio('assets/click.mp3');
+// Cria o áudio uma vez só, pra não instanciar toda hora
+const clickSound = new Audio('assets/click.mp3');
 
 moods.forEach(btn => {
-  btn.addEventListener("click.mp3", () => {
-    somClique.play(); // toca o som no clique
+  btn.addEventListener("click", () => {
     const mood = btn.dataset.mood;
+    
+    // Toca o som de clique
+    clickSound.currentTime = 0;  // reseta o áudio para o começo
+    clickSound.play();
+
     mudarTema(mood);
     mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.`;
   });
@@ -33,3 +37,5 @@ function mudarTema(mood) {
       break;
   }
 }
+
+
