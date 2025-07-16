@@ -1,3 +1,5 @@
+const somClique = new Audio('click.mp3');
+
 const mensagem = document.getElementById("mensagem");
 const moods = document.querySelectorAll(".mood");
 
@@ -30,13 +32,14 @@ const recomendacoes = {
 
 moods.forEach(btn => {
   btn.addEventListener("click", () => {
+    somClique.currentTime = 0;
+    somClique.play();
+
     const mood = btn.dataset.mood;
     mudarTema(mood);
 
-    // Sincronização emocional
     mensagem.innerHTML = `<p>Canal emocional "<strong>${mood}</strong>" sincronizado.<br>Interface adaptada.</p>`;
 
-    // Recomendações com base no humor
     const r = recomendacoes[mood];
     const bloco = `
       <div class="card">
@@ -69,3 +72,9 @@ function mudarTema(mood) {
       document.documentElement.style.setProperty("--bg", "#001f3f");
       document.documentElement.style.setProperty("--text", "#a9cce3");
       break;
+    case "serenidade":
+      document.documentElement.style.setProperty("--bg", "#102020");
+      document.documentElement.style.setProperty("--text", "#b0fdfd");
+      break;
+  }
+}
