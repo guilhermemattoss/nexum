@@ -27,7 +27,7 @@ function mudarTema(mood) {
   switch (mood) {
     case "vazio":
       document.documentElement.style.setProperty("--bg", "#0a0a0a");
-      document.documentElement.style.setProperty("--text", "#777");
+      document.documentElement.style.setProperty("--text", "#777777");
       break;
     case "furia":
       document.documentElement.style.setProperty("--bg", "#2b0000");
@@ -43,8 +43,3 @@ function mudarTema(mood) {
       break;
   }
 }
-
-}
-
-
-
