@@ -1,4 +1,4 @@
-const clickSound = new Audio("assets/click.mp3"); 
+const clickSound = new Audio("assets/click.mp3");
 
 const mensagem = document.getElementById("mensagem");
 const moods = document.querySelectorAll(".mood");
@@ -9,10 +9,9 @@ moods.forEach(btn => {
     mudarTema(mood);
     clickSound.play();
 
-    
     mensagem.classList.add('fade');
     setTimeout(() => {
-      mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.`;
+      mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.\n🎵 Recomendação: ${recomendarMusica(mood)}`;
 
       const style = getComputedStyle(document.documentElement);
       const textColor = style.getPropertyValue('--text');
@@ -41,5 +40,20 @@ function mudarTema(mood) {
       document.documentElement.style.setProperty("--bg", "#102020");
       document.documentElement.style.setProperty("--text", "#b0fdfd");
       break;
+  }
+}
+
+function recomendarMusica(mood) {
+  switch (mood) {
+    case "vazio":
+      return "“Mad World” - Gary Jules";
+    case "furia":
+      return "“Killing in the Name” - Rage Against the Machine";
+    case "tristeza":
+      return "“Fix You” - Coldplay";
+    case "serenidade":
+      return "“Weightless” - Marconi Union";
+    default:
+      return "Escolha um humor para receber sua trilha sonora!";
   }
 }
