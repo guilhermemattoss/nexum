@@ -29,7 +29,6 @@ h1 {
   margin-bottom: 0;
 }
 
-
 .neon-text {
   color: #00ffff;
   text-shadow:
@@ -80,18 +79,49 @@ h1 {
   margin: 30px 0;
 }
 
+/* Estilo neon pulsante pros botões de humor */
 .mood {
-  font-size: 2rem;
+  font-size: 2.5rem;
   background: none;
   border: none;
-  margin: 0 10px;
+  margin: 0 15px;
   cursor: pointer;
-  transition: transform 0.2s;
   color: var(--text);
+  text-shadow:
+    0 0 5px var(--text),
+    0 0 10px var(--text),
+    0 0 20px var(--text);
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+  animation: neonPulse 3s infinite alternate ease-in-out;
 }
 
-.mood:hover {
-  transform: scale(1.3);
+.mood:hover, .mood:focus {
+  transform: scale(1.5);
+  color: #00ffff;
+  text-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #00ffff,
+    0 0 40px #00ffff;
+  outline: none;
+  animation: none; /* pausa o pulsar no hover para dar foco total */
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow:
+      0 0 3px var(--text),
+      0 0 6px var(--text),
+      0 0 10px var(--text);
+  }
+  100% {
+    text-shadow:
+      0 0 10px var(--text),
+      0 0 20px var(--text),
+      0 0 30px var(--text);
+  }
 }
 
 #mensagem {
