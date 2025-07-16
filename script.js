@@ -1,18 +1,13 @@
+const clickSound = new Audio("assets/click.mp3"); // Som do clique, caminho certinho
+
 const mensagem = document.getElementById("mensagem");
 const moods = document.querySelectorAll(".mood");
-
-// Cria o áudio uma vez só, pra não instanciar toda hora
-const clickSound = new Audio('assets/click.mp3');
 
 moods.forEach(btn => {
   btn.addEventListener("click", () => {
     const mood = btn.dataset.mood;
-    
-    // Toca o som de clique
-    clickSound.currentTime = 0;  // reseta o áudio para o começo
-    clickSound.play();
-
     mudarTema(mood);
+    clickSound.play(); // toca o som do clique
     mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.`;
   });
 });
