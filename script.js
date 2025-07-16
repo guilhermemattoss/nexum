@@ -2,7 +2,7 @@ const mensagem = document.getElementById("mensagem");
 const moods = document.querySelectorAll(".mood");
 
 // Audio do clique
-const somClique = new Audio('assets/click.mp3');
+const somClique = new Audio('assets/click');
 
 moods.forEach(btn => {
   btn.addEventListener("click", () => {
