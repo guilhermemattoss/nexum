@@ -79,7 +79,6 @@ h1 {
   margin: 30px 0;
 }
 
-
 .mood {
   font-size: 2.5rem;
   background: none;
@@ -91,7 +90,6 @@ h1 {
   transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
   animation: neonPulse 3s infinite alternate ease-in-out;
 }
-
 
 .mood[data-mood="vazio"] {
   color: #999999;
@@ -121,7 +119,6 @@ h1 {
     0 0 10px #87ceeb,
     0 0 20px #87ceeb;
 }
-
 
 .mood:hover, .mood:focus {
   transform: scale(1.5);
@@ -172,7 +169,6 @@ h1 {
   animation: none;
 }
 
-
 @keyframes neonPulse {
   0% {
     text-shadow:
@@ -192,4 +188,10 @@ h1 {
   font-style: italic;
   opacity: 0.8;
   margin-top: 20px;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+#mensagem.fade {
+  opacity: 0;
 }
