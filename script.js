@@ -11,8 +11,7 @@ moods.forEach(btn => {
 
     mensagem.classList.add('fade');
     setTimeout(() => {
-      const recomendacao = recomendarMusica(mood);
-      mensagem.innerHTML = `Canal emocional "${mood}" sincronizado. Interface adaptada.<br>${recomendacao}`;
+      mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.\n🎵 Recomendação: ${recomendarMusica(mood)}`;
 
       const style = getComputedStyle(document.documentElement);
       const textColor = style.getPropertyValue('--text');
@@ -47,13 +46,13 @@ function mudarTema(mood) {
 function recomendarMusica(mood) {
   switch (mood) {
     case "vazio":
-      return `<a href="https://www.youtube.com/watch?v=4N3N1MlvVc4" target="_blank">🎵 “Mad World” - Gary Jules</a>`;
+      return "“Mad World” - Gary Jules";
     case "furia":
-      return `<a href="https://www.youtube.com/watch?v=bWXazVhlyxQ" target="_blank">🔥 “Killing in the Name” - Rage Against the Machine</a>`;
+      return "“Killing in the Name” - Rage Against the Machine";
     case "tristeza":
-      return `<a href="https://www.youtube.com/watch?v=k4V3Mo61fJM" target="_blank">💧 “Fix You” - Coldplay</a>`;
+      return "“Fix You” - Coldplay";
     case "serenidade":
-      return `<a href="https://www.youtube.com/watch?v=UfcAVejslrU" target="_blank">🌊 “Weightless” - Marconi Union</a>`;
+      return "“Weightless” - Marconi Union";
     default:
       return "Escolha um humor para receber sua trilha sonora!";
   }
