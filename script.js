@@ -7,11 +7,14 @@ moods.forEach(btn => {
   btn.addEventListener("click", () => {
     const mood = btn.dataset.mood;
     mudarTema(mood);
-    clickSound.play();
+    clickSound.currentTime = 0;
+    clickSound.play().catch(e => console.log("Erro ao tocar som:", e));
 
     mensagem.classList.add('fade');
     setTimeout(() => {
-      mensagem.textContent = `Canal emocional "${mood}" sincronizado. Interface adaptada.\n🎵 Recomendação: ${recomendarMusica(mood)}`;
+      const recomendacao = recomendarMusica(mood);
+      console.log("Recomendação:", recomendacao);
+      mensagem.innerHTML = `Canal emocional "${mood}" sincronizado. Interface adaptada.<br>${recomendacao}`;
 
       const style = getComputedStyle(document.documentElement);
       const textColor = style.getPropertyValue('--text');
@@ -46,13 +49,13 @@ function mudarTema(mood) {
 function recomendarMusica(mood) {
   switch (mood) {
     case "vazio":
-      return "“Mad World” - Gary Jules";
+      return `<a href="https://www.youtube.com/watch?v=4N3N1MlvVc4" target="_blank" rel="noopener noreferrer">🎵 “Mad World” - Gary Jules</a>`;
     case "furia":
-      return "“Killing in the Name” - Rage Against the Machine";
+      return `<a href="https://www.youtube.com/watch?v=bWXazVhlyxQ" target="_blank" rel="noopener noreferrer">🔥 “Killing in the Name” - Rage Against the Machine</a>`;
     case "tristeza":
-      return "“Fix You” - Coldplay";
+      return `<a href="https://www.youtube.com/watch?v=k4V3Mo61fJM" target="_blank" rel="noopener noreferrer">💧 “Fix You” - Coldplay</a>`;
     case "serenidade":
-      return "“Weightless” - Marconi Union";
+      return `<a href="https://www.youtube.com/watch?v=UfcAVejslrU" target="_blank" rel="noopener noreferrer">🌊 “Weightless” - Marconi Union</a>`;
     default:
       return "Escolha um humor para receber sua trilha sonora!";
   }
