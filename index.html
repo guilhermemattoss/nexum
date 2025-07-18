@@ -19,24 +19,33 @@
     <h1 class="neon-text">NEXUM</h1>
 
     <p class="sub">Sistema neural conectado.</p>
-    <div class="moods">
+
+    
+    <div id="auth">
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Senha" />
+      <button id="btnLogin">Login</button>
+      <button id="btnSignup">Cadastrar</button>
+    </div>
+
+    
+    <div class="moods" style="display:none;">
       <button class="mood" data-mood="vazio">🕳️</button>
       <button class="mood" data-mood="furia">🔥</button>
       <button class="mood" data-mood="tristeza">💧</button>
       <button class="mood" data-mood="serenidade">🌫️</button>
     </div>
+
     <p id="mensagem">Aguardando sincronização...</p>
   </main>
   
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 
   <script>
     console.log("%c Founder - Guilherme Matos", "color: #4CAF50; font-weight: bold; font-size: 16px;");
-  
   </script>
   <footer class="footer">
-  Founder — Guilherme Matos
-</footer>
-
+    Founder — Guilherme Matos
+  </footer>
 </body>
 </html>
