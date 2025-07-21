@@ -1,51 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <!-- 
-    By Mitose 
-    🌐 https://mitose.dev 
-    Fructus multorum laboris et solitudinis.
-  -->
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="CEO" content="Guilherme Matos" />
-  <title>NEXUM // SYSTEM LINKED</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexum Recomendações</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #00bfff;
+    }
+
+    .mood {
+      margin: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #00bfff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .mood:hover {
+      background: #0099cc;
+    }
+
+    #mensagem {
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left: 4px solid #00bfff;
+      border-radius: 0.75rem;
+      color: #fff;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-  <main>
-    <h1 class="neon-text">NEXUM</h1>
+  <h1>Como você está se sentindo?</h1>
 
-    <p class="sub">Sistema neural conectado.</p>
+  <button class="mood" data-mood="feliz">😄 Feliz</button>
+  <button class="mood" data-mood="triste">😢 Triste</button>
 
-    
-    <div id="auth">
-      <input type="email" id="email" placeholder="Email" />
-      <input type="password" id="password" placeholder="Senha" />
-      <button id="btnLogin">Login</button>
-      <button id="btnSignup">Cadastrar</button>
-    </div>
-
-    
-    <div class="moods" style="display:none;">
-      <button class="mood" data-mood="vazio">🕳️</button>
-      <button class="mood" data-mood="furia">🔥</button>
-      <button class="mood" data-mood="tristeza">💧</button>
-      <button class="mood" data-mood="serenidade">🌫️</button>
-    </div>
-
-    <p id="mensagem">Aguardando sincronização...</p>
-  </main>
-  
-  <script type="module" src="script.js"></script>
+  <div id="mensagem"></div>
 
   <script>
-    console.log("%c Founder - Guilherme Matos", "color: #4CAF50; font-weight: bold; font-size: 16px;");
+    const mensagem = document.getElementById("mensagem");
+    const moods = document.querySelectorAll(".mood");
+
+    const recomendacoes = {
+      feliz: [
+        "🎵 Música: Happy - Pharrell",
+        "🎬 Filme: Soul",
+        "📺 Série: Brooklyn Nine-Nine"
+      ],
+      triste: [
+        "🎵 Música: Someone Like You - Adele",
+        "🎬 Filme: As Vantagens de Ser Invisível",
+        "📺 Série: This Is Us"
+      ]
+    };
+
+    moods.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const mood = btn.dataset.mood;
+        const sugestoes = recomendacoes[mood];
+
+        if (sugestoes && sugestoes.length > 0) {
+          const aleatoria = sugestoes[Math.floor(Math.random() * sugestoes.length)];
+
+          mensagem.classList.remove("fade-in");
+          void mensagem.offsetWidth;
+          mensagem.textContent = aleatoria;
+          mensagem.classList.add("fade-in");
+        } else {
+          mensagem.textContent = "Sem recomendações ainda 😢";
+        }
+      });
+    });
   </script>
-  <footer class="footer">
-    Founder — Guilherme Matos
-  </footer>
 </body>
 </html>
