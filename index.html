@@ -5,20 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexum</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #1a1a1a;
       color: #fff;
+      padding-top: 60px; 
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00bfff;
+      letter-spacing: 1px;
+    }
+
+    main {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      min-height: calc(100vh - 60px);
       padding: 2rem;
+      text-align: center;
     }
 
     h1 {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       font-size: 2rem;
       color: #00bfff;
     }
@@ -26,7 +59,7 @@
     .mood {
       margin: 0.5rem;
       padding: 0.75rem 1.25rem;
-      font-size: 1rem;
+      font-size: 1.25rem;
       border: none;
       border-radius: 0.5rem;
       background: #00bfff;
@@ -73,12 +106,20 @@
   </style>
 </head>
 <body>
-  <h1>Como você está se sentindo?</h1>
 
-  <button class="mood" data-mood="feliz">😄 Feliz</button>
-  <button class="mood" data-mood="triste">😢 Triste</button>
+  <header>
+    <div class="logo">🌐 Nexum</div>
+    <!-- Aqui futuramente tu pode por links: Sobre, Contato, etc. -->
+  </header>
 
-  <div id="mensagem"></div>
+  <main>
+    <h1>Como você está se sentindo?</h1>
+
+    <button class="mood" data-mood="feliz">😄 Feliz</button>
+    <button class="mood" data-mood="triste">😢 Triste</button>
+
+    <div id="mensagem"></div>
+  </main>
 
   <script>
     const mensagem = document.getElementById("mensagem");
@@ -115,5 +156,6 @@
       });
     });
   </script>
+
 </body>
 </html>
