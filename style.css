@@ -39,7 +39,6 @@ body.light header {
   color: #00bfff;
 }
 
-
 .neon-text {
   color: #00ffff;
   text-shadow:
@@ -193,7 +192,7 @@ body.light header {
       0 0 20px currentColor,
       0 0 30px currentColor;
   }
-
+=======
 #toggle-tema {
   background: none;
   border: none;
