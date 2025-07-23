@@ -8,10 +8,9 @@
   padding: 10px;
   transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
   animation: neonPulse 3s infinite alternate ease-in-out;
-
+ 
   -webkit-tap-highlight-color: transparent;
 }
-
 
 .mood[data-mood="vazio"] {
   color: #999999;
