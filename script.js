@@ -161,4 +161,3 @@ moods.forEach(btn => {
     salvarHumorFirebase(mood);
   });
 });
-
