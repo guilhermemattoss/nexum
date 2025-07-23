@@ -38,6 +38,7 @@ body.light header {
   font-weight: bold;
   color: #00bfff;
 }
+<<<<<<< HEAD
 #toggle-tema {
   background: none;
   border: none;
@@ -76,8 +77,165 @@ h1 {
 .mood:hover {
   background: #0099cc;
   transform: scale(1.05);
+=======
+
+.neon-text {
+  color: #00ffff;
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #0ff,
+    0 0 60px #0ff,
+    0 0 80px #0ff,
+    0 0 100px #0ff;
+  font-weight: 900;
+  font-family: var(--font);
+  letter-spacing: 0.3em;
+  animation: glow 1.5s ease-in-out infinite;
+  transform: scale(1.05);
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #00ffff,
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 40px #0ff,
+      0 0 60px #0ff,
+      0 0 80px #0ff,
+      0 0 100px #0ff;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #00ffff,
+      0 0 4px #00ffff,
+      0 0 10px #00ffff,
+      0 0 20px #0ff,
+      0 0 40px #0ff,
+      0 0 60px #0ff,
+      0 0 80px #0ff;
+  }
+}
+
+.sub {
+  margin-top: 0;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.moods {
+  margin: 30px 0;
+}
+
+.mood {
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  margin: 0 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+  animation: neonPulse 3s infinite alternate ease-in-out;
+}
+
+.mood[data-mood="vazio"] {
+  color: #999999;
+  text-shadow:
+    0 0 5px #999999,
+    0 0 10px #999999,
+    0 0 20px #999999;
+}
+.mood[data-mood="furia"] {
+  color: #ff4500;
+  text-shadow:
+    0 0 5px #ff4500,
+    0 0 10px #ff4500,
+    0 0 20px #ff4500;
+}
+.mood[data-mood="tristeza"] {
+  color: #1e90ff;
+  text-shadow:
+    0 0 5px #1e90ff,
+    0 0 10px #1e90ff,
+    0 0 20px #1e90ff;
+}
+.mood[data-mood="serenidade"] {
+  color: #87ceeb;
+  text-shadow:
+    0 0 5px #87ceeb,
+    0 0 10px #87ceeb,
+    0 0 20px #87ceeb;
+}
+
+.mood:hover, .mood:focus {
+  transform: scale(1.5);
+  outline: none;
+}
+
+.mood[data-mood="vazio"]:hover,
+.mood[data-mood="vazio"]:focus {
+  color: #bbbbbb;
+  text-shadow:
+    0 0 10px #bbbbbb,
+    0 0 20px #bbbbbb,
+    0 0 30px #bbbbbb,
+    0 0 40px #bbbbbb;
+  animation: none;
+}
+
+.mood[data-mood="furia"]:hover,
+.mood[data-mood="furia"]:focus {
+  color: #ff6347;
+  text-shadow:
+    0 0 10px #ff6347,
+    0 0 20px #ff6347,
+    0 0 30px #ff6347,
+    0 0 40px #ff6347;
+  animation: none;
+}
+
+.mood[data-mood="tristeza"]:hover,
+.mood[data-mood="tristeza"]:focus {
+  color: #6495ed;
+  text-shadow:
+    0 0 10px #6495ed,
+    0 0 20px #6495ed,
+    0 0 30px #6495ed,
+    0 0 40px #6495ed;
+  animation: none;
+}
+
+.mood[data-mood="serenidade"]:hover,
+.mood[data-mood="serenidade"]:focus {
+  color: #b0e0e6;
+  text-shadow:
+    0 0 10px #b0e0e6,
+    0 0 20px #b0e0e6,
+    0 0 30px #b0e0e6,
+    0 0 40px #b0e0e6;
+  animation: none;
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow:
+      0 0 3px currentColor,
+      0 0 6px currentColor,
+      0 0 10px currentColor;
+  }
+  100% {
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+>>>>>>> 365b2bbfb93009c1fd1f80083e8dd002ddf4bb3e
 }
 #mensagem {
+<<<<<<< HEAD
   font-size: 1.2rem;
   font-weight: 600;
   padding: 1rem 1.5rem;
@@ -95,4 +253,30 @@ h1 {
 }
 body.light #mensagem {
   background-color: rgba(0, 0, 0, 0.05);
+=======
+  font-style: italic;
+  opacity: 0.8;
+  margin-top: 20px;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+#mensagem.fade {
+  opacity: 0;
+}
+
+
+.footer {
+  font-size: 0.75rem;
+  color: var(--text);
+  opacity: 0.5;
+  text-align: center;
+  padding: 10px 0;
+  font-family: var(--font);
+  user-select: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: transparent;
+>>>>>>> 365b2bbfb93009c1fd1f80083e8dd002ddf4bb3e
 }
