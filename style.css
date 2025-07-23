@@ -38,46 +38,7 @@ body.light header {
   font-weight: bold;
   color: #00bfff;
 }
-<<<<<<< HEAD
-#toggle-tema {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: inherit;
-}
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-}
-h1 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  text-align: center;
-}
-.botoes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-.mood {
-  padding: 0.6rem 1rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 0.5rem;
-  background: #00bfff;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.mood:hover {
-  background: #0099cc;
-  transform: scale(1.05);
-=======
+
 
 .neon-text {
   color: #00ffff;
@@ -232,28 +193,49 @@ h1 {
       0 0 20px currentColor,
       0 0 30px currentColor;
   }
->>>>>>> 365b2bbfb93009c1fd1f80083e8dd002ddf4bb3e
+=======
+#toggle-tema {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.mood {
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #00bfff;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.mood:hover {
+  background: #0099cc;
+  transform: scale(1.05);
+>>>>>>> 8d98bfc (feat: Nexum com UI interativa e melhorias top)
 }
 #mensagem {
 <<<<<<< HEAD
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 1rem 1.5rem;
-  border-left: 4px solid #00bfff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
-  backdrop-filter: blur(6px);
-  text-align: center;
-  max-width: 90%;
-  animation: fadeIn 0.3s ease-in-out;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-body.light #mensagem {
-  background-color: rgba(0, 0, 0, 0.05);
-=======
   font-style: italic;
   opacity: 0.8;
   margin-top: 20px;
@@ -278,5 +260,23 @@ body.light #mensagem {
   bottom: 0;
   width: 100%;
   background: transparent;
->>>>>>> 365b2bbfb93009c1fd1f80083e8dd002ddf4bb3e
+=======
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid #00bfff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(6px);
+  text-align: center;
+  max-width: 90%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+body.light #mensagem {
+  background-color: rgba(0, 0, 0, 0.05);
+>>>>>>> 8d98bfc (feat: Nexum com UI interativa)
 }
