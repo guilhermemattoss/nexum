@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <!-- 
-    By Mitose 
-    🌐 https://mitose.dev 
-    Fructus multorum laboris et solitudinis.
-  -->
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="CEO" content="Guilherme Matos" />
-  <title>NEXUM // SYSTEM LINKED</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexum</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>NEXUM</h1>
-    <p class="sub">Sistema neural conectado.</p>
-    <div class="moods">
-      <button class="mood" data-mood="vazio">🕳️</button>
-      <button class="mood" data-mood="furia">🔥</button>
-      <button class="mood" data-mood="tristeza">💧</button>
-      <button class="mood" data-mood="serenidade">🌫️</button>
-    </div>
-    <p id="mensagem">Aguardando sincronização...</p>
-  </main>
-  
-  <script src="script.js"></script>
+  <header>
+    <div class="logo">🌐 Nexum</div>
+    <button id="toggle-tema">🌓</button>
+  </header>
 
-  <script>
-    console.log("%c Founder - Guilherme Matos", "color: #4CAF50; font-weight: bold; font-size: 16px;");
-  </script>
+  <main>
+    <h1>Como você está se sentindo?</h1>
+    <div class="botoes">
+      <button class="mood" data-mood="feliz">😄 Feliz</button>
+      <button class="mood" data-mood="triste">😢 Triste</button>
+      <button class="mood" data-mood="calmo">🧘‍♂️ Calmo</button>
+      <button class="mood" data-mood="irritado">🤬 Irritado</button>
+      <button class="mood" data-mood="cansado">😴 Cansado</button>
+      <button class="mood" data-mood="apaixonado">😍 Apaixonado</button>
+    </div>
+    <div id="mensagem"></div>
+  </main>
+
+  <!-- Mensagem secreta no código 😎 -->
+  <!-- 
+    🌐 Nexum por Mitose
+    Este projeto é fruto de dedicação e visão.
+    Fructus multorum laboris et solitudinis.
+  -->
 </body>
 </html>
