@@ -12,10 +12,8 @@ body {
   padding-top: 70px;
 }
 
-body.light {
-  background-color: #f2f2f2;
-  color: #111;
-}
+
+
 
 header {
   position: fixed;
