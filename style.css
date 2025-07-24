@@ -220,3 +220,18 @@ body.light header {
       0 0 30px currentColor;
   }
 }
+.mood:focus,
+.mood:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #0099cc !important; /* mantem a cor original ou ajusta conforme você quiser */
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.mood {
+  user-select: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
