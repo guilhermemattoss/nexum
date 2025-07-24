@@ -111,12 +111,14 @@ body.light header {
 
 
 .mood:focus {
-  outline: none;
+  outline: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Cores e neon dos humores */
+
+
 .mood[data-mood="vazio"] {
   color: #999999;
   text-shadow:
