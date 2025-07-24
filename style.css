@@ -224,7 +224,7 @@ body.light header {
 .mood:active {
   outline: none !important;
   box-shadow: none !important;
-  background-color: #0099cc !important; /* mantem a cor original ou ajusta conforme você quiser */
+  background-color: #0099cc !important; 
   -webkit-tap-highlight-color: transparent !important;
 }
 
