@@ -229,3 +229,7 @@ header {
   -ms-user-select: none;
 }
 
+.mood {
+  -webkit-tap-highlight-color: transparent;
+}
+
