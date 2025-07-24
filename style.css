@@ -117,6 +117,10 @@ body.light header {
   -webkit-tap-highlight-color: transparent !important;
 }
 
+.mood:active {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
 
 
 
