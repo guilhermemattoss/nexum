@@ -16,10 +16,19 @@
     <button id="toggle-tema">🌓</button>
   </header>
 
-  <main>
+  <main> 
+
     <h1>Como você está se sentindo?</h1>
 
-    <div class="botoes">
+    <!-- POST -->
+    <textarea id="postInput" placeholder="O que você está sentindo?"></textarea>
+    <button id="btnPostar">Postar</button>
+
+    <!-- FEED -->
+    <div id="feed"></div>
+
+    <!-- HUMOR -->
+    <div class="moods">
       <button class="mood" data-mood="feliz">😄 Feliz</button>
       <button class="mood" data-mood="triste">😢 Triste</button>
       <button class="mood" data-mood="calmo">🧘‍♂️ Calmo</button>
@@ -28,7 +37,9 @@
       <button class="mood" data-mood="apaixonado">😍 Apaixonado</button>
     </div>
 
+    <!-- MENSAGEM -->
     <div id="mensagem"></div>
+
   </main>
 
 </body>
