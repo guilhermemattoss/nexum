@@ -1,23 +1,30 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
+import { 
+  getFirestore, 
+  doc, 
+  setDoc, 
+  getDoc, 
+  serverTimestamp,
+  collection,
+  addDoc,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDSM8zwHfuBQqJI0HdLHKM7CvbnXaaIeEI",
+  apiKey: "SUA_KEY",
   authDomain: "nexum-bfd4f.firebaseapp.com",
   projectId: "nexum-bfd4f",
   storageBucket: "nexum-bfd4f.firebasestorage.app",
   messagingSenderId: "595290271397",
-  appId: "1:595290271397:web:92deb960a61432eb9f674c",
-  measurementId: "G-G7V32MMWSK"
+  appId: "1:595290271397:web:92deb960a61432eb9f674c"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-
+// 🔹 elementos
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const btnLogin = document.getElementById("btnLogin");
@@ -27,136 +34,148 @@ const moodsDiv = document.querySelector(".moods");
 const authDiv = document.getElementById("auth");
 const moods = document.querySelectorAll(".mood");
 
+// 🔥 NOVOS
+const feed = document.getElementById("feed");
+const btnPostar = document.getElementById("btnPostar");
+const postInput = document.getElementById("postInput");
+
 const clickSound = new Audio("assets/click.mp3");
 
-
+// 🎨 tema
 function mudarTema(mood) {
-  switch (mood) {
-    case "vazio":
-      document.documentElement.style.setProperty("--bg", "#0a0a0a");
-      document.documentElement.style.setProperty("--text", "#777777");
-      break;
-    case "furia":
-      document.documentElement.style.setProperty("--bg", "#2b0000");
-      document.documentElement.style.setProperty("--text", "#ff4c4c");
-      break;
-    case "tristeza":
-      document.documentElement.style.setProperty("--bg", "#001f3f");
-      document.documentElement.style.setProperty("--text", "#a9cce3");
-      break;
-    case "serenidade":
-      document.documentElement.style.setProperty("--bg", "#102020");
-      document.documentElement.style.setProperty("--text", "#b0fdfd");
-      break;
+  const temas = {
+    vazio: ["#0a0a0a", "#777"],
+    furia: ["#2b0000", "#ff4c4c"],
+    tristeza: ["#001f3f", "#a9cce3"],
+    serenidade: ["#102020", "#b0fdfd"]
+  };
+
+  if (temas[mood]) {
+    document.documentElement.style.setProperty("--bg", temas[mood][0]);
+    document.documentElement.style.setProperty("--text", temas[mood][1]);
   }
 }
 
+// 🎵 música
 function recomendarMusica(mood) {
-  switch (mood) {
-    case "vazio":
-      return `<a href="https://www.youtube.com/watch?v=4N3N1MlvVc4" target="_blank" rel="noopener noreferrer">🎵 “Mad World” - Gary Jules</a>`;
-    case "furia":
-      return `<a href="https://www.youtube.com/watch?v=bWXazVhlyxQ" target="_blank" rel="noopener noreferrer">🔥 “Killing in the Name” - Rage Against the Machine</a>`;
-    case "tristeza":
-      return `<a href="https://www.youtube.com/watch?v=k4V3Mo61fJM" target="_blank" rel="noopener noreferrer">💧 “Fix You” - Coldplay</a>`;
-    case "serenidade":
-      return `<a href="https://www.youtube.com/watch?v=UfcAVejslrU" target="_blank" rel="noopener noreferrer">🌊 “Weightless” - Marconi Union</a>`;
-    default:
-      return "Escolha um humor para receber sua trilha sonora!";
-  }
+  const musicas = {
+    vazio: "https://www.youtube.com/embed/4N3N1MlvVc4",
+    furia: "https://www.youtube.com/embed/bWXazVhlyxQ",
+    tristeza: "https://www.youtube.com/embed/k4V3Mo61fJM",
+    serenidade: "https://www.youtube.com/embed/UfcAVejslrU"
+  };
+
+  if (!musicas[mood]) return "";
+
+  return `
+    <iframe width="250" height="80"
+    src="${musicas[mood]}"
+    frameborder="0" allowfullscreen></iframe>
+  `;
 }
 
-
+// 💾 salvar humor
 async function salvarHumorFirebase(humor) {
   const user = auth.currentUser;
-  if (!user) {
-    alert("Você precisa estar logado para salvar seu humor!");
-    return;
-  }
-  try {
-    await setDoc(doc(db, "usuarios", user.uid), {
-      humor,
-      atualizadoEm: serverTimestamp()
-    }, { merge: true });
-    console.log(`Humor "${humor}" salvo no Firestore.`);
-  } catch (e) {
-    console.error("Erro ao salvar humor:", e);
-  }
+  if (!user) return;
+
+  await setDoc(doc(db, "usuarios", user.uid), {
+    humor,
+    atualizadoEm: serverTimestamp()
+  }, { merge: true });
 }
 
-
+// 👤 pegar humor
 async function pegarHumorUsuario() {
   const user = auth.currentUser;
   if (!user) return;
-  try {
-    const docSnap = await getDoc(doc(db, "usuarios", user.uid));
-    if (docSnap.exists()) {
-      const humorSalvo = docSnap.data().humor;
-      mensagem.textContent = `Seu humor salvo: ${humorSalvo}`;
-    } else {
-      mensagem.textContent = "Nenhum humor salvo ainda.";
-    }
-  } catch (e) {
-    console.error("Erro ao pegar humor:", e);
+
+  const docSnap = await getDoc(doc(db, "usuarios", user.uid));
+
+  if (docSnap.exists()) {
+    mensagem.textContent = `Seu humor: ${docSnap.data().humor}`;
   }
 }
 
+// 🧠 CRIAR POST
+async function criarPost(texto) {
+  const user = auth.currentUser;
+  if (!user) return;
 
+  await addDoc(collection(db, "posts"), {
+    uid: user.uid,
+    texto,
+    criadoEm: serverTimestamp()
+  });
+}
+
+// 🔥 CARREGAR FEED
+async function carregarPosts() {
+  const querySnapshot = await getDocs(collection(db, "posts"));
+
+  feed.innerHTML = "";
+
+  querySnapshot.forEach((doc) => {
+    const post = doc.data();
+
+    const div = document.createElement("div");
+    div.classList.add("post");
+
+    div.innerHTML = `
+      <p>${post.texto}</p>
+      <small>${post.uid}</small>
+    `;
+
+    feed.appendChild(div);
+  });
+}
+
+// 🔘 postar
+btnPostar?.addEventListener("click", async () => {
+  const texto = postInput.value;
+  if (!texto) return;
+
+  await criarPost(texto);
+  postInput.value = "";
+  carregarPosts();
+});
+
+// 🔐 auth
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    
     authDiv.style.display = "none";
     moodsDiv.style.display = "flex";
     pegarHumorUsuario();
+    carregarPosts(); // 🔥 AQUI
   } else {
-    
     authDiv.style.display = "block";
     moodsDiv.style.display = "none";
-    mensagem.textContent = "Faça login para salvar seu humor.";
   }
 });
 
-
+// 🔑 login
 btnLogin.addEventListener("click", async () => {
-  const email = emailInput.value;
-  const password = passwordInput.value;
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch (e) {
-    alert("Erro no login: " + e.message);
-  }
+  await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
 });
 
+// 🆕 cadastro
 btnSignup.addEventListener("click", async () => {
-  const email = emailInput.value;
-  const password = passwordInput.value;
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    alert("Cadastro feito com sucesso! Agora faça login.");
-  } catch (e) {
-    alert("Erro no cadastro: " + e.message);
-  }
+  await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
 });
 
-
+// 🎭 moods
 moods.forEach(btn => {
   btn.addEventListener("click", () => {
     const mood = btn.dataset.mood;
+
     mudarTema(mood);
     clickSound.currentTime = 0;
-    clickSound.play().catch(e => console.log("Erro ao tocar som:", e));
+    clickSound.play();
 
-    mensagem.classList.add("fade");
-    setTimeout(() => {
-      const recomendacao = recomendarMusica(mood);
-      mensagem.innerHTML = `Canal emocional "${mood}" sincronizado. Interface adaptada.<br>${recomendacao}`;
-
-      const style = getComputedStyle(document.documentElement);
-      const textColor = style.getPropertyValue("--text");
-      mensagem.style.color = textColor;
-
-      mensagem.classList.remove("fade");
-    }, 300);
+    mensagem.innerHTML = `
+      Você está em <b>${mood}</b><br>
+      ${recomendarMusica(mood)}
+    `;
 
     salvarHumorFirebase(mood);
   });
