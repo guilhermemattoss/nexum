@@ -24,7 +24,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 🔹 elementos
+
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const btnLogin = document.getElementById("btnLogin");
@@ -34,14 +34,14 @@ const moodsDiv = document.querySelector(".moods");
 const authDiv = document.getElementById("auth");
 const moods = document.querySelectorAll(".mood");
 
-// 🔥 NOVOS
+
 const feed = document.getElementById("feed");
 const btnPostar = document.getElementById("btnPostar");
 const postInput = document.getElementById("postInput");
 
 const clickSound = new Audio("assets/click.mp3");
 
-// 🎨 tema
+
 function mudarTema(mood) {
   const temas = {
     vazio: ["#0a0a0a", "#777"],
@@ -56,7 +56,7 @@ function mudarTema(mood) {
   }
 }
 
-// 🎵 música
+
 function recomendarMusica(mood) {
   const musicas = {
     vazio: "https://www.youtube.com/embed/4N3N1MlvVc4",
@@ -74,7 +74,7 @@ function recomendarMusica(mood) {
   `;
 }
 
-// 💾 salvar humor
+
 async function salvarHumorFirebase(humor) {
   const user = auth.currentUser;
   if (!user) return;
@@ -85,7 +85,7 @@ async function salvarHumorFirebase(humor) {
   }, { merge: true });
 }
 
-// 👤 pegar humor
+
 async function pegarHumorUsuario() {
   const user = auth.currentUser;
   if (!user) return;
@@ -97,7 +97,7 @@ async function pegarHumorUsuario() {
   }
 }
 
-// 🧠 CRIAR POST
+
 async function criarPost(texto) {
   const user = auth.currentUser;
   if (!user) return;
@@ -109,7 +109,7 @@ async function criarPost(texto) {
   });
 }
 
-// 🔥 CARREGAR FEED
+
 async function carregarPosts() {
   const querySnapshot = await getDocs(collection(db, "posts"));
 
@@ -130,7 +130,7 @@ async function carregarPosts() {
   });
 }
 
-// 🔘 postar
+
 btnPostar?.addEventListener("click", async () => {
   const texto = postInput.value;
   if (!texto) return;
@@ -140,7 +140,7 @@ btnPostar?.addEventListener("click", async () => {
   carregarPosts();
 });
 
-// 🔐 auth
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     authDiv.style.display = "none";
@@ -153,17 +153,17 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// 🔑 login
+
 btnLogin.addEventListener("click", async () => {
   await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
 });
 
-// 🆕 cadastro
+
 btnSignup.addEventListener("click", async () => {
   await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
 });
 
-// 🎭 moods
+
 moods.forEach(btn => {
   btn.addEventListener("click", () => {
     const mood = btn.dataset.mood;
