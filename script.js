@@ -12,13 +12,14 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_KEY",
-  authDomain: "nexum-bfd4f.firebaseapp.com",
-  projectId: "nexum-bfd4f",
-  storageBucket: "nexum-bfd4f.firebasestorage.app",
-  messagingSenderId: "595290271397",
-  appId: "1:595290271397:web:92deb960a61432eb9f674c"
-};
+    apiKey: "AIzaSyDSM8zwHfuBQqJI0HdLHKM7CvbnXaaIeEI",
+    authDomain: "nexum-bfd4f.firebaseapp.com",
+    projectId: "nexum-bfd4f",
+    storageBucket: "nexum-bfd4f.firebasestorage.app",
+    messagingSenderId: "595290271397",
+    appId: "1:595290271397:web:92deb960a61432eb9f674c",
+    measurementId: "G-G7V32MMWSK"
+  };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
