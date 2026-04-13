@@ -6,7 +6,9 @@
   <title>Nexum</title>
 
   <link rel="stylesheet" href="style.css" />
-  <script src="app.js" defer></script>
+
+  <!-- IMPORTANTE: SEU SCRIPT PRINCIPAL -->
+  <script type="module" src="script.js" defer></script>
 </head>
 
 <body>
@@ -16,29 +18,49 @@
     <button id="toggle-tema">🌓</button>
   </header>
 
-  <main> 
+  <main>
 
-    <h1>Como você está se sentindo?</h1>
+    <!-- LOGIN / CADASTRO -->
+    <section id="auth">
+      <h2>Entrar / Criar conta</h2>
 
-    <!-- POST -->
-    <textarea id="postInput" placeholder="O que você está sentindo?"></textarea>
-    <button id="btnPostar">Postar</button>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Senha">
 
-    <!-- FEED -->
-    <div id="feed"></div>
+      <button id="btnLogin">Login</button>
+      <button id="btnSignup">Cadastrar</button>
+    </section>
 
-    <!-- HUMOR -->
-    <div class="moods">
-      <button class="mood" data-mood="feliz">😄 Feliz</button>
-      <button class="mood" data-mood="triste">😢 Triste</button>
-      <button class="mood" data-mood="calmo">🧘‍♂️ Calmo</button>
-      <button class="mood" data-mood="irritado">🤬 Irritado</button>
-      <button class="mood" data-mood="cansado">😴 Cansado</button>
-      <button class="mood" data-mood="apaixonado">😍 Apaixonado</button>
-    </div>
+    <!-- APP -->
+    <section id="app" style="display:none;">
 
-    <!-- MENSAGEM -->
-    <div id="mensagem"></div>
+      <h1>Como você está se sentindo?</h1>
+
+      <!-- POST -->
+      <textarea id="postInput" placeholder="O que você está sentindo?"></textarea>
+
+      <!-- UPLOAD DE IMAGEM -->
+      <input type="file" id="imageInput" accept="image/*">
+
+      <button id="btnPostar">Postar</button>
+
+      <!-- FEED -->
+      <div id="feed"></div>
+
+      <!-- HUMOR -->
+      <div class="moods">
+        <button class="mood" data-mood="feliz">😄 Feliz</button>
+        <button class="mood" data-mood="triste">😢 Triste</button>
+        <button class="mood" data-mood="calmo">🧘‍♂️ Calmo</button>
+        <button class="mood" data-mood="irritado">🤬 Irritado</button>
+        <button class="mood" data-mood="cansado">😴 Cansado</button>
+        <button class="mood" data-mood="apaixonado">😍 Apaixonado</button>
+      </div>
+
+      <!-- MENSAGEM -->
+      <div id="mensagem"></div>
+
+    </section>
 
   </main>
 
