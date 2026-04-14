@@ -100,6 +100,8 @@ async function criarPost(texto) {
   const user = auth.currentUser;
   if (!user) return;
 
+  console.log("ARQUIVOS:", imageInput?.files);
+
   const userDoc = await getDoc(doc(db, "usuarios", user.uid));
   const nome = userDoc.exists() ? userDoc.data().nome : "Anon";
 
