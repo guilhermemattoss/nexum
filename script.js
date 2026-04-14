@@ -63,7 +63,7 @@ const clickSound = new Audio("assets/click.mp3");
 async function uploadImage(file) {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "nexum_upload"); // seu preset
+  formData.append("upload_preset", "nexum_upload");
 
   const res = await fetch("https://api.cloudinary.com/v1_1/dxnyjxtbk/image/upload", {
     method: "POST",
@@ -71,6 +71,9 @@ async function uploadImage(file) {
   });
 
   const data = await res.json();
+
+  console.log("RESPOSTA CLOUDINARY:", data); // 👈 AQUI
+
   return data.secure_url;
 }
 // ================= PERFIL =================
