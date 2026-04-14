@@ -63,7 +63,7 @@ const clickSound = new Audio("assets/click.mp3");
 async function uploadImage(file) {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "nexum_upload"); // seu preset
+  formData.append("upload_preset", "nexum_upload");
 
   const res = await fetch("https://api.cloudinary.com/v1_1/dxnyjxtbk/image/upload", {
     method: "POST",
@@ -71,6 +71,9 @@ async function uploadImage(file) {
   });
 
   const data = await res.json();
+
+  console.log("RESPOSTA CLOUDINARY:", data); // 👈 AQUI
+
   return data.secure_url;
 }
 // ================= PERFIL =================
@@ -93,17 +96,22 @@ async function atualizarPerfil() {
 btnSalvarPerfil?.addEventListener("click", atualizarPerfil);
 
 // ================= POSTS =================
-async function criarPost(texto) {
+async function criarPost(texto, imageInput) {
   const user = auth.currentUser;
   if (!user) return;
+
+  const file = imageInput?.files?.[0];
+
+  console.log("FILE:", file);
+  
 
   const userDoc = await getDoc(doc(db, "usuarios", user.uid));
   const nome = userDoc.exists() ? userDoc.data().nome : "Anon";
 
   let imageUrl = "";
 
-  if (imageInput?.files.length > 0) {
-    imageUrl = await uploadImage(imageInput.files[0]);
+  if (file) {
+    imageUrl = await uploadImage(file);
     console.log("URL DA IMAGEM:", imageUrl);
   }
 
@@ -111,9 +119,9 @@ async function criarPost(texto) {
     uid: user.uid,
     nome,
     texto,
-    imageUrl,
     criadoEm: serverTimestamp(),
-    likes: []
+    likes: [],
+    ...(imageUrl && { imageUrl }) // 👈 evita undefined
   });
 }
 
@@ -161,6 +169,8 @@ async function carregarPosts() {
 
     for (const docItem of snapshot.docs) {
       const post = docItem.data();
+
+      console.log("POST:", post); 
 
       if (!seguindo.includes(post.uid)) continue;
 
@@ -253,15 +263,34 @@ btnSignup?.addEventListener("click", async () => {
 });
 
 // ================= POST BUTTON =================
-btnPostar?.addEventListener("click", async () => {
-  const texto = postInput.value;
-  if (!texto) return;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    authDiv.style.display = "none";
+    appDiv.style.display = "block";
 
-  await criarPost(texto);
+    const btnPostar = document.getElementById("btnPostar");
 
-  postInput.value = "";
-  if (imageInput) imageInput.value = "";
+    btnPostar?.addEventListener("click", async () => {
+      console.log("BOTÃO CLICADO");
+
+      const texto = document.getElementById("postInput").value;
+      const imageInputAtual = document.getElementById("imageInput");
+      if (!texto) return;
+
+      await criarPost(texto, imageInputAtual);
+
+      document.getElementById("postInput").value = "";
+imageInputAtual.value = "";
+    });
+
+    carregarPosts();
+
+  } else {
+    authDiv.style.display = "block";
+    appDiv.style.display = "none";
+  }
 });
+  
 
 // ================= MOODS =================
 moods.forEach(btn => {
@@ -275,14 +304,3 @@ moods.forEach(btn => {
   });
 });
 
-// ================= AUTH STATE =================
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    authDiv.style.display = "none";
-    appDiv.style.display = "block";
-    carregarPosts();
-  } else {
-    authDiv.style.display = "block";
-    appDiv.style.display = "none";
-  }
-});

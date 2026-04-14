@@ -120,32 +120,32 @@ header {
 
 .mood[data-mood="feliz"] {
   color: #00ffcc;
-  text-shadow: 0 0 10px #00ffcc;
+  text-shadow: 0 0 7px #00ffcc;
 }
 
 .mood[data-mood="triste"] {
   color: #1e90ff;
-  text-shadow: 0 0 10px #1e90ff;
+  text-shadow: 0 0 7px #1e90ff;
 }
 
 .mood[data-mood="calmo"] {
   color: #87ceeb;
-  text-shadow: 0 0 10px #87ceeb;
+  text-shadow: 0 0 7px #87ceeb;
 }
 
 .mood[data-mood="irritado"] {
   color: #ff4500;
-  text-shadow: 0 0 10px #ff4500;
+  text-shadow: 0 0 7px #ff4500;
 }
 
 .mood[data-mood="cansado"] {
   color: #aaaaaa;
-  text-shadow: 0 0 10px #aaaaaa;
+  text-shadow: 0 0 7px #aaaaaa;
 }
 
 .mood[data-mood="apaixonado"] {
   color: #ff69b4;
-  text-shadow: 0 0 10px #ff69b4;
+  text-shadow: 0 0 7px #ff69b4;
 }
 
 .mood:hover,
@@ -157,37 +157,37 @@ header {
 
 .mood[data-mood="feliz"]:hover {
   color: #00ffcc;
-  text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  text-shadow: 0 0 15px #00ffcc, 0 0 40px #00ffcc;
 }
 
 
 .mood[data-mood="triste"]:hover {
   color: #6495ed;
-  text-shadow: 0 0 20px #6495ed, 0 0 40px #6495ed;
+  text-shadow: 0 0 15px #6495ed, 0 0 40px #6495ed;
 }
 
 
 .mood[data-mood="calmo"]:hover {
   color: #87ceeb;
-  text-shadow: 0 0 20px #87ceeb, 0 0 40px #87ceeb;
+  text-shadow: 0 0 15px #87ceeb, 0 0 40px #87ceeb;
 }
 
 
 .mood[data-mood="irritado"]:hover {
   color: #ff4500;
-  text-shadow: 0 0 20px #ff4500, 0 0 40px #ff4500;
+  text-shadow: 0 0 15px #ff4500, 0 0 40px #ff4500;
 }
 
 
 .mood[data-mood="cansado"]:hover {
   color: #aaaaaa;
-  text-shadow: 0 0 20px #aaaaaa, 0 0 40px #aaaaaa;
+  text-shadow: 0 0 15px #aaaaaa, 0 0 40px #aaaaaa;
 }
 
 emulador 
 .mood[data-mood="apaixonado"]:hover {
   color: #ff69b4;
-  text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+  text-shadow: 0 0 15px #ff69b4, 0 0 40px #ff69b4;
 }
 
 
