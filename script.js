@@ -27,6 +27,7 @@ const firebaseConfig = {
     authDomain: "nexum-bfd4f.firebaseapp.com",
     projectId: "nexum-bfd4f",
     storageBucket: "nexum-bfd4f.firebasestorage.app",
+    appId: "1:595290271397:web:0c0e860298e712d99f674c",
     messagingSenderId: "595290271397",
 }   
 
