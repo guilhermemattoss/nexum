@@ -300,14 +300,3 @@ moods.forEach(btn => {
   });
 });
 
-// ================= AUTH STATE =================
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    authDiv.style.display = "none";
-    appDiv.style.display = "block";
-    carregarPosts();
-  } else {
-    authDiv.style.display = "block";
-    appDiv.style.display = "none";
-  }
-});
