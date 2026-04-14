@@ -63,9 +63,9 @@ const clickSound = new Audio("assets/click.mp3");
 async function uploadImage(file) {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "SEU_UPLOAD_PRESET");
+  formData.append("upload_preset", "nexum_upload"); // seu preset
 
-  const res = await fetch("https://api.cloudinary.com/v1_1/SEU_CLOUD_NAME/image/upload", {
+  const res = await fetch("https://api.cloudinary.com/v1_1/dxnyjxtbk/image/upload", {
     method: "POST",
     body: formData
   });
@@ -73,7 +73,6 @@ async function uploadImage(file) {
   const data = await res.json();
   return data.secure_url;
 }
-
 // ================= PERFIL =================
 async function atualizarPerfil() {
   const user = auth.currentUser;
@@ -105,6 +104,7 @@ async function criarPost(texto) {
 
   if (imageInput?.files.length > 0) {
     imageUrl = await uploadImage(imageInput.files[0]);
+    console.log("URL DA IMAGEM:", imageUrl);
   }
 
   await addDoc(collection(db, "posts"), {
