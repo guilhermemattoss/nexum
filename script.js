@@ -253,15 +253,33 @@ btnSignup?.addEventListener("click", async () => {
 });
 
 // ================= POST BUTTON =================
-btnPostar?.addEventListener("click", async () => {
-  const texto = postInput.value;
-  if (!texto) return;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    authDiv.style.display = "none";
+    appDiv.style.display = "block";
 
-  await criarPost(texto);
+    const btnPostar = document.getElementById("btnPostar");
 
-  postInput.value = "";
-  if (imageInput) imageInput.value = "";
+    btnPostar?.addEventListener("click", async () => {
+      console.log("BOTÃO CLICADO");
+
+      const texto = postInput.value;
+      if (!texto) return;
+
+      await criarPost(texto);
+
+      postInput.value = "";
+      if (imageInput) imageInput.value = "";
+    });
+
+    carregarPosts();
+
+  } else {
+    authDiv.style.display = "block";
+    appDiv.style.display = "none";
+  }
 });
+  
 
 // ================= MOODS =================
 moods.forEach(btn => {
