@@ -96,11 +96,11 @@ async function atualizarPerfil() {
 btnSalvarPerfil?.addEventListener("click", atualizarPerfil);
 
 // ================= POSTS =================
-async function criarPost(texto) {
+async function criarPost(texto, imageInput) {
   const user = auth.currentUser;
   if (!user) return;
 
-  const file = imageInput?.files?.[0]; // 👈 GUARDA AQUI
+  const file = imageInput?.files?.[0];
 
   console.log("FILE:", file);
   
@@ -273,13 +273,14 @@ onAuthStateChanged(auth, (user) => {
     btnPostar?.addEventListener("click", async () => {
       console.log("BOTÃO CLICADO");
 
-      const texto = postInput.value;
+      const texto = document.getElementById("postInput").value;
+      const imageInputAtual = document.getElementById("imageInput");
       if (!texto) return;
 
-      await criarPost(texto);
+      await criarPost(texto, imageInputAtual);
 
-      postInput.value = "";
-      if (imageInput) imageInput.value = "";
+      document.getElementById("postInput").value = "";
+imageInputAtual.value = "";
     });
 
     carregarPosts();
