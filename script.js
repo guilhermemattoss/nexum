@@ -100,15 +100,17 @@ async function criarPost(texto) {
   const user = auth.currentUser;
   if (!user) return;
 
-  console.log("ARQUIVOS:", imageInput?.files);
+  const file = imageInput?.files?.[0]; // 👈 GUARDA AQUI
+
+  console.log("FILE:", file);
 
   const userDoc = await getDoc(doc(db, "usuarios", user.uid));
   const nome = userDoc.exists() ? userDoc.data().nome : "Anon";
 
   let imageUrl = "";
 
-  if (imageInput?.files.length > 0) {
-    imageUrl = await uploadImage(imageInput.files[0]);
+  if (file) {
+    imageUrl = await uploadImage(file);
     console.log("URL DA IMAGEM:", imageUrl);
   }
 
@@ -116,9 +118,9 @@ async function criarPost(texto) {
     uid: user.uid,
     nome,
     texto,
-    imageUrl,
     criadoEm: serverTimestamp(),
-    likes: []
+    likes: [],
+    ...(imageUrl && { imageUrl }) // 👈 evita undefined
   });
 }
 
