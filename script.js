@@ -103,6 +103,7 @@ async function criarPost(texto) {
   const file = imageInput?.files?.[0]; // 👈 GUARDA AQUI
 
   console.log("FILE:", file);
+  
 
   const userDoc = await getDoc(doc(db, "usuarios", user.uid));
   const nome = userDoc.exists() ? userDoc.data().nome : "Anon";
@@ -168,6 +169,8 @@ async function carregarPosts() {
 
     for (const docItem of snapshot.docs) {
       const post = docItem.data();
+
+      console.log("POST:", post); 
 
       if (!seguindo.includes(post.uid)) continue;
 
